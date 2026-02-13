@@ -1,0 +1,230 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║          GUIDE DE COMPILATION - APPLICATION ANDROID APK                ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Cette application Android remplace complètement Termux et automatise toute
+la configuration du serveur d'accès à distance.
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ AVANTAGES DE L'APK                                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+✅ Installation en 1 clic (pas besoin de Termux)
+✅ Interface graphique simple
+✅ Demande automatique des permissions
+✅ Démarrage automatique au boot
+✅ Service en arrière-plan stable
+✅ Wake lock intégré (pas de mise en veille)
+✅ Affichage de l'IP directement dans l'app
+✅ Notification permanente quand actif
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ MÉTHODE 1: COMPILATION AVEC ANDROID STUDIO (Recommandée)              │
+└────────────────────────────────────────────────────────────────────────┘
+
+1. INSTALLER ANDROID STUDIO
+   - Téléchargez depuis: https://developer.android.com/studio
+   - Installez avec les paramètres par défaut
+   - Acceptez les licences SDK
+
+2. OUVRIR LE PROJET
+   - Lancez Android Studio
+   - File → Open
+   - Sélectionnez le dossier "Serveur Android APK"
+   - Attendez la synchronisation Gradle (2-5 minutes)
+
+3. COMPILER L'APK
+   - Build → Build Bundle(s) / APK(s) → Build APK(s)
+   - Attendez la compilation (1-3 minutes)
+   - L'APK sera dans: app/build/outputs/apk/debug/app-debug.apk
+
+4. INSTALLER SUR ANDROID
+   - Connectez votre Android en USB
+   - Activez le débogage USB
+   - Run → Run 'app' (ou Shift+F10)
+   - OU transférez app-debug.apk et installez manuellement
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ MÉTHODE 2: COMPILATION EN LIGNE DE COMMANDE (Gradle)                  │
+└────────────────────────────────────────────────────────────────────────┘
+
+WINDOWS:
+1. Ouvrez PowerShell dans le dossier "Serveur Android APK"
+2. Exécutez:
+   .\gradlew assembleDebug
+
+3. L'APK sera dans:
+   app\build\outputs\apk\debug\app-debug.apk
+
+LINUX/MAC:
+1. Ouvrez Terminal dans le dossier "Serveur Android APK"
+2. Exécutez:
+   chmod +x gradlew
+   ./gradlew assembleDebug
+
+3. L'APK sera dans:
+   app/build/outputs/apk/debug/app-debug.apk
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ MÉTHODE 3: COMPILATION EN LIGNE (Sans installation)                   │
+└────────────────────────────────────────────────────────────────────────┘
+
+Utilisez un service en ligne:
+
+1. APPETIZE.IO (Gratuit, limité)
+   - https://appetize.io/
+   - Uploadez le projet
+   - Compilez en ligne
+
+2. GITHUB ACTIONS (Gratuit, automatique)
+   - Créez un repo GitHub
+   - Uploadez le projet
+   - Configurez GitHub Actions pour compiler l'APK
+
+3. REPLIT (Gratuit)
+   - https://replit.com/
+   - Créez un nouveau projet Android
+   - Uploadez les fichiers
+   - Compilez
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ INSTALLATION DE L'APK SUR ANDROID                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+MÉTHODE A: Via ADB (depuis PC)
+  adb install app-debug.apk
+
+MÉTHODE B: Transfert USB
+  1. Copiez app-debug.apk sur votre Android
+  2. Ouvrez le fichier depuis le gestionnaire de fichiers
+  3. Autorisez "Installer des apps inconnues"
+  4. Installez
+
+MÉTHODE C: Via Cloud
+  1. Uploadez app-debug.apk sur Google Drive/Dropbox
+  2. Téléchargez sur Android
+  3. Installez
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ UTILISATION DE L'APPLICATION                                          │
+└────────────────────────────────────────────────────────────────────────┘
+
+1. PREMIÈRE OUVERTURE
+   - L'app demandera toutes les permissions
+   - Accordez TOUTES les permissions:
+     * Caméra
+     * Microphone
+     * Localisation
+     * Contacts
+     * SMS
+     * Stockage
+
+2. DÉMARRER LE SERVEUR
+   - Appuyez sur "DÉMARRER LE SERVEUR"
+   - L'IP s'affichera automatiquement
+   - Une notification permanente apparaîtra
+   - Le serveur reste actif même en arrière-plan
+
+3. SE CONNECTER DEPUIS LE CLIENT
+   - Sur votre PC, lancez le client Windows
+   - Entrez l'IP affichée dans l'app
+   - Port: 4444
+   - Connectez-vous!
+
+4. ARRÊTER LE SERVEUR
+   - Ouvrez l'app
+   - Appuyez sur "ARRÊTER LE SERVEUR"
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ FONCTIONNALITÉS DE L'APK                                              │
+└────────────────────────────────────────────────────────────────────────┘
+
+✓ Capture caméra (avant et arrière)
+✓ Enregistrement audio
+✓ Géolocalisation GPS
+✓ Informations système
+✓ Exécution de commandes shell
+✓ Service en arrière-plan
+✓ Démarrage automatique au boot
+✓ Wake lock (pas de mise en veille)
+✓ Notification permanente
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ DÉPANNAGE COMPILATION                                                 │
+└────────────────────────────────────────────────────────────────────────┘
+
+PROBLÈME: "SDK not found"
+  → Installez Android SDK via Android Studio
+  → Ou définissez ANDROID_HOME dans les variables d'environnement
+
+PROBLÈME: "Gradle sync failed"
+  → Vérifiez votre connexion Internet
+  → File → Invalidate Caches / Restart dans Android Studio
+
+PROBLÈME: "Build failed"
+  → Vérifiez que Java JDK 8+ est installé
+  → Build → Clean Project puis Build → Rebuild Project
+
+PROBLÈME: "Permission denied" (Linux/Mac)
+  → chmod +x gradlew
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ PERSONNALISATION                                                       │
+└────────────────────────────────────────────────────────────────────────┘
+
+CHANGER LE PORT:
+  - Éditez RemoteServerService.java
+  - Ligne: serverSocket = new ServerSocket(4444);
+  - Remplacez 4444 par votre port
+
+CHANGER L'ICÔNE:
+  - Remplacez app/src/main/res/mipmap/ic_launcher.png
+
+CHANGER LE NOM:
+  - Éditez AndroidManifest.xml
+  - Ligne: android:label="Remote Server"
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ SIGNATURE DE L'APK (Pour production)                                  │
+└────────────────────────────────────────────────────────────────────────┘
+
+Pour créer une version signée (release):
+
+1. Dans Android Studio:
+   Build → Generate Signed Bundle / APK
+   
+2. Créez un nouveau keystore
+   
+3. Remplissez les informations
+   
+4. Choisissez "release"
+   
+5. L'APK signé sera dans: app/release/app-release.apk
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ APK PRÉ-COMPILÉ                                                        │
+└────────────────────────────────────────────────────────────────────────┘
+
+Si vous ne voulez pas compiler vous-même, je peux vous fournir un APK
+pré-compilé. Cependant, pour des raisons de sécurité, il est recommandé
+de compiler vous-même l'application.
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ SÉCURITÉ                                                               │
+└────────────────────────────────────────────────────────────────────────┘
+
+⚠️ IMPORTANT:
+  - Cette app donne un accès COMPLET à votre Android
+  - Utilisez uniquement sur VOS appareils
+  - Ne distribuez pas l'APK publiquement
+  - Changez le port par défaut pour plus de sécurité
+  - Désactivez le serveur quand non utilisé
+
+⚠️ PERMISSIONS:
+  - L'app demande beaucoup de permissions
+  - C'est normal pour les fonctionnalités de surveillance
+  - N'installez que sur vos propres appareils
+
+╔════════════════════════════════════════════════════════════════════════╗
+║  PROJET PRÊT - Compilez avec Android Studio ou Gradle!               ║
+╚════════════════════════════════════════════════════════════════════════╝
