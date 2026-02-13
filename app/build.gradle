@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace 'com.cybersec.remoteserver'
     compileSdk 33
 
     defaultConfig {
